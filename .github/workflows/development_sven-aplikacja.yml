@@ -22,11 +22,12 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Build with dotnet 
-       run: working-directory: ./MyDotNetWebApp
         run: dotnet build --configuration Release
+        working-directory: ./MyDotNetWebApp
 
       - name: dotnet publish
         run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+        working-directory: ./MyDotNetWebApp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
